@@ -1,0 +1,1 @@
+nombre_aplicacion = 'Organizacion de citas medicas de pacientes'
