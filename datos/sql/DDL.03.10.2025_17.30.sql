@@ -50,18 +50,18 @@ CREATE TABLE IF NOT EXISTS Paciente(
     id_paciente INT NOT NULL, 
 
     CONSTRAINT pk_Cita_medica PRIMARY KEY (id),
-    CONSTRAINT fk_id_doctor_cita_medica FOREIGN KEY (id_doctor) REFERENCES doctor(id)
-    CONSTRAINT fk_id_paciente_cita_medica FOREIGN KEY (id_paciente) REFERENCES paciente(id)
+    CONSTRAINT fk_cita_medica_id_doctor FOREIGN KEY (id_doctor) REFERENCES doctor(id)
+    CONSTRAINT fk_cita_medica-id_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id)
  );
 
  CREATE TABLE IF NOT EXISTS Doctor(
-    id INT AUTO_INCREMENT  
+    id INT AUTO_INCREMENT,  
     nombre varchar (250) NOT NULL, 
     licencia varchar (250) NOT NULL,
     id_especialidad INT NOT NULL,
 
-    CONSTRAINT PK_Doctor primary key (id), 
-    CONSTRAINT fk_especialidad FOREIGN key (especialidad) REFERENCES especialidad (id)
+    CONSTRAINT PK_Doctor PRIMARY KEY (id), 
+    CONSTRAINT fk_Doctor_id_especialidad FOREIGN key (id_especialidad) REFERENCES especialidad (id)
  );
 
  CREATE TABLE IF NOT EXISTS Especialidad(
@@ -69,16 +69,40 @@ CREATE TABLE IF NOT EXISTS Paciente(
     especialidad VARCHAR(250) NOT NULL,
     descripcion VARCHAR(250) NOT NULL, 
 
-    CONSTRAINT PK_especialidad key (id) 
+    CONSTRAINT PK_especialidad PRIMARY KEY (id) 
  );
  CREATE TABLE IF NOT EXISTS Recetamedica(
-    id INT AUTO_INCREMENT,
-    id_receta INT NOT NULL, 
+    id INT AUTO_INCREMENT, 
     detalle VARCHAR(250) NOT NULL, 
     fecha DATE NOT NULL, 
     id_paciente INT NOT NULL,
     id_doctor INT NOT NULL,
 
-    CONSTRAINT pk_Recetamedica primary key (id), 
-    CONSTRAINT fk_paciente_recetamedica FOREIGN key (paciente) REFERENCES paciente(id)
+    CONSTRAINT pk_Recetamedica PRIMARY KEY (id), 
+    CONSTRAINT fk_Recetamedica_id_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id)
+    CONSTRAINT fk_Recetamedica_id_doctor FOREIGN KEY (id_doctor) REFERENCES Doctor(id)
+ );
+
+ CREATE TABLE IF NOT EXISTS Turno(
+   id INT AUTO_INCREMENT,
+   fecha DATE NOT NULL,
+   hora_inicio DATETIME NOT NULL,
+   hora_fin DATETIME NOT NULL,
+   id_doctor INT NOT NULL,
+
+   CONSTRAINT pk_id_Turno PRIMARY KEY (id),
+   CONSTRAINT fk_Turno_id_doctor FOREIGN KEY (id_doctor) REFERENCES Doctor(id)
+ );
+
+ CREATE TABLE IF NOT EXISTS Orden_examenes(
+   id INT AUTO_INCREMENT,
+   fecha DATE NOT NULL,
+   id_paciente INT NOT NULL,
+   id_doctor INT NOT NULL,
+   id_cita_medica INT NOT NULL,
+
+   CONSTRAINT pk_id_orden_examenes PRIMARY KEY(id),
+   CONSTRAINT fk_orden_examenes_id_paciente FOREIGN KEY (id_paciente) REFERENCES Paciente(id),
+   CONSTRAINT fk_orden_examenes_id_doctor FOREIGN KEY (id_doctor) REFERENCES Doctor(id),
+   CONSTRAINT fk_orden_examenes_id_cita_medica FOREIGN KEY (id_cita_medica) REFERENCES Cita_medica(id)
  );

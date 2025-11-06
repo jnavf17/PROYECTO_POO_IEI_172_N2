@@ -1,5 +1,5 @@
 # Proyecto : Organizacion de citas medicas de pacientes
-# Autor: 
+# Autor: José Navarrete
 
 """
 Un método de versionamiento del codigo es usar:
