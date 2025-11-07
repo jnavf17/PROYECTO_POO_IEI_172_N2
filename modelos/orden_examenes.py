@@ -1,22 +1,10 @@
-# from modelos.paciente import Paciente
-# from modelos.doctor import Doctor
-# from modelos.cita_medica import Cita_medica
-
-# class RecetaMedica(Paciente,Doctor,Cita_medica):
-#     def __init__(self,id,fecha,id_paciente,id_doctor,id_cita_medica):
-#         super().__init__(id_paciente)
-#         super().__init__(id_doctor)
-#         super().__init__(id_cita_medica)
-#         self.id = id
-#         self.fecha = fecha
-
 from sqlalchemy import Column, Integer, Date, func
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
 
-class Comuna(Base):
+class OrdenExamenes(Base):
     __tablename__ = 'Orden_examenes'
     id = Column(Integer, primary_key=True)
     fecha = Column(Date(timezone=True), server_default=func.now())

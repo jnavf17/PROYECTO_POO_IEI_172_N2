@@ -1,6 +1,5 @@
 from iu.menus import menu_principal, menu_trabajos
-from iu.pedir_datos import datos_marca
-from datos.guardar_datos import guardar_marca
+from iu.pedir_datos import
 
 while True:
     menu_principal()

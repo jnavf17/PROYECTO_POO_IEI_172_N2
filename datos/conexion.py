@@ -9,6 +9,8 @@ from sqlalchemy.orm import sessionmaker
 # mysql+mysqlconnector://user:password@host:port/database_name
 # Reemplazar user, password, host, port, y database con sus credenciales de DB
 
-cadena_conexion = 'mysql+mysqlconnector://root:@localhost:3306/iei_172_n2'
-motordb = create_engine(cadena_conexion)
+DATABASE_URL = 'mysql+mysqlconnector://root:@localhost:3306/iei_172_n2'
+motor_db = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=motor_db)
+
+sesion = Session()

@@ -1,13 +1,3 @@
-# from modelos.comuna import Comuna
-
-# class Direccion(Comuna):
-#     def __init__(self,id_direccion=0,id_comuna=0,calle='',numero='',departamento=''):
-#         super().__init__(id_comuna)
-#         self.id_direccion = id_direccion
-#         self.calle = calle
-#         self.numero = numero
-#         self.departamento = departamento
-
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
