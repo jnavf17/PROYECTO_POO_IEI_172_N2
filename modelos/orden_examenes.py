@@ -7,7 +7,7 @@ Base = declarative_base()
 class OrdenExamenes(Base):
     __tablename__ = 'Orden_examenes'
     id = Column(Integer, primary_key=True)
-    fecha = Column(Date(timezone=True), server_default=func.now())
+    fecha = Column(Date(), server_default=func.now())
     id_doctor = Column(Integer, nullable=True)
     id_paciente = Column(Integer, nullable=True)
     id_cita_medica = Column(Integer, nullable=True)

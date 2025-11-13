@@ -8,7 +8,7 @@ class RecetaMedica(Base):
     __tablename__ = 'Recetamedica'
     id = Column(Integer, primary_key=True)
     detalle = Column(String(250), nullable=True)
-    fecha = Column(Date(timezone=True), server_default=func.now())
+    fecha = Column(Date(), server_default=func.now())
     id_paciente = Column(Integer, nullable=True)
     id_doctor = Column(Integer, nullable=True)
     

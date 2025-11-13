@@ -7,7 +7,7 @@ Base = declarative_base()
 class Citamedica(Base):
     __tablename__ = 'cita_medica'
     id = Column(Integer, primary_key=True)
-    fechayhora = Column(Date(timezone=True), server_default=func.now())
+    fechayhora = Column(Date(), server_default=func.now())
     motivo = Column(String(255), nullable=False)
     diagnostico = Column(String(255), nullable=False)
     licencia_medica = Column(String(255), nullable=True)

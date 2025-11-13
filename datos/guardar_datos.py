@@ -1,5 +1,4 @@
 from datos.conexion import sesion
-from sqlalchemy import func
 from modelos.comuna import Comuna
 
 

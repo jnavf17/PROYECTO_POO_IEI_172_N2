@@ -1,4 +1,5 @@
-from datos.obtener_datos import obtener_lista_objetos, crear_objeto,modificar_objeto
+from datos.obtener_datos import obtener_lista_objetos
+from datos.guardar_datos import crear_objeto,modificar_objeto
 from iu import str_nombre_comuna,str_codigo_comuna,str_nuevo_nombre_comuna,str_nuevo_codigo_comuna
 from modelos.comuna import Comuna
 from prettytable import PrettyTable
@@ -24,11 +25,13 @@ def obtener_comuna_nombre(nombre: str):
             
 
 def crear_comuna():
-    nombre, codigo = str_nombre_comuna()
+    nombre = str_nombre_comuna()
     if nombre!='':
-        comuna = obtener_comuna_nombre(nombre)
-        if comuna == None:
-            nueva_comuna = Comuna(
+        codigo = str_codigo_comuna()
+        if codigo!='':
+            comuna = obtener_comuna_nombre(nombre)
+            if comuna == None:
+                nueva_comuna = Comuna(
                 nombre_comuna=nombre.title(),
                 codigo_comuna=codigo)
             crear_objeto(nueva_comuna)
