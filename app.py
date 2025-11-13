@@ -1,5 +1,5 @@
 from iu.menus import menu_principal, menu_trabajos,menu_configuracion,sub_menu_comunas
-from datos.guardar_datos import 
+from datos.guardar_datos import guardar_comuna
 from negocio import obtener_listado_comunas,crear_comuna,modificar_comuna
 from auxiliares import nombre_aplicacion, numero_version
 
