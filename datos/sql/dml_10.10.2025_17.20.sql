@@ -346,3 +346,60 @@ INSERT INTO comunas(codigo_comuna,nombre_comuna) VALUES
 ('13603','Isla de Maipo'),
 ('13604','Padre Hurtado'),
 ('13605','Peñaflor');
+
+INSERT INTO Direccion (id, calle, numero, departamento, detalle)
+VALUES
+(1, 'Av. Alameda', 1234, 'Depto 502', 'Cerca del metro Moneda'),
+(2, 'Av. Providencia', 4567, 'Depto 804', 'Frente a Plaza de la Aviación'),
+(3, 'Av. Irarrázaval', 987, 'Depto 301', 'Cerca del estadio');
+
+INSERT INTO Especialidad (especialidad, descripcion)
+VALUES
+('Cardiología', 'Trata enfermedades del corazón'),
+('Dermatología', 'Trata enfermedades de la piel'),
+('Medicina General', 'Atiende pacientes de atención primaria');
+
+INSERT INTO Doctor (nombre, licencia, id_especialidad)
+VALUES
+('Dr. Ricardo Soto', 'LIC-12345',1),
+('Dra. Fernanda Lagos', 'LIC-67890',2),
+('Dr. Jaime Núñez', 'LIC-11223',3);
+
+INSERT INTO Paciente (nombre, edad, id_direccion, rut)
+VALUES
+('Juan Pérez', 34, 1, '12.345.678-9'),
+('María González', 45, 2, '21.987.654-3'),
+('Carlos Muñoz', 28, 3, '19.456.789-2'),
+('Ana Torres', 34, 4, '12.345.678-9'),
+('Luis Rojas', 45, 5, '13.987.654-3'),
+('Camila Soto', 29, 6, '15.678.432-1');
+
+INSERT INTO Ficha_clinica (id_paciente, historial_medico)
+VALUES
+(1, 'Alergia al polen, antecedentes cardíacos familiares'),
+(2, 'Hipertensión controlada con medicación'),
+(3, 'Sin antecedentes relevantes');
+
+INSERT INTO Cita_medica (fechayhora, motivo, diagnostico, licencia_medica, id_doctor, id_paciente)
+VALUES
+('2025-11-20 10:30', 'Control general', 'Salud estable', NULL, 1, 1),
+('2025-11-22 15:00', 'Revisión dermatológica', 'Dermatitis leve', '3 días', 2, 2),
+('2025-11-25 09:00', 'Chequeo anual', 'Normal', NULL, 3, 3);
+
+INSERT INTO Receta_medica (detalle, fecha, id_paciente, id_doctor)
+VALUES
+('Paracetamol 500mg cada 8 horas por 5 días', '2025-11-20', 1, 1),
+('Crema hidratante 2 veces al día', '2025-11-22', 2, 2),
+('Vitaminas diarias durante 1 mes', '2025-11-25', 3, 3);
+
+INSERT INTO Turno (fecha, hora_inicio, hora_fin, id_doctor)
+VALUES
+('2025-11-13', '2025-11-13 08:00:00', '2025-11-13 14:00:00', 1),
+('2025-11-13', '2025-11-13 14:00:00', '2025-11-13 20:00:00', 2),
+('2025-11-14', '2025-11-14 08:00:00', '2025-11-14 14:00:00', 3);
+
+INSERT INTO Orden_examenes (fecha, id_paciente, id_doctor, id_cita_medica)
+VALUES
+('2025-10-02', 1, 1, 1),
+('2025-10-04', 3, 3, 2),
+('2025-10-06', 2, 2, 3);

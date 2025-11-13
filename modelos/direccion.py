@@ -5,7 +5,7 @@ Base = declarative_base()
 
 
 class Direccion(Base):
-    __tablename__ = 'direcciones'
+    __tablename__ = 'direccion'
     id = Column(Integer, primary_key=True)
     calle = Column(String(255), nullable=True)
     numero = Column(String(10), nullable=True)

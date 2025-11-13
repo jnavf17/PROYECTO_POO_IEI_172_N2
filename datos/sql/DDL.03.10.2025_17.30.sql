@@ -20,14 +20,23 @@ CREATE TABLE IF NOT EXISTS direccion(
     CONSTRAINT fk_direccion_comunas FOREIGN KEY (id_comuna) REFERENCES comunas(id)
 );
 
-CREATE TABLE IF NOT EXISTS ficha_clinica(
+CREATE TABLE IF NOT EXISTS Especialidad(
     id INT AUTO_INCREMENT,
-    id_paciente INT NOT NULL,
-    historial_medico VARCHAR(255) NOT NULL,
+    especialidad VARCHAR(250) NOT NULL,
+    descripcion VARCHAR(250) NOT NULL,
+     
+    CONSTRAINT PK_especialidad PRIMARY KEY (id) 
+ );
 
-    CONSTRAINT pk_ficha_clinica PRIMARY KEY (id),
-    CONSTRAINT fk_ficha_clinica_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id)
-);
+CREATE TABLE IF NOT EXISTS Doctor(
+    id INT AUTO_INCREMENT,  
+    nombre varchar (250) NOT NULL, 
+    licencia varchar (250) NOT NULL,
+    id_especialidad INT NOT NULL,
+
+    CONSTRAINT PK_Doctor PRIMARY KEY (id), 
+    CONSTRAINT fk_Doctor_id_especialidad FOREIGN key (id_especialidad) REFERENCES especialidad (id)
+ );
 
 CREATE TABLE IF NOT EXISTS Paciente(
     id INT AUTO_INCREMENT,
@@ -39,6 +48,15 @@ CREATE TABLE IF NOT EXISTS Paciente(
     CONSTRAINT PK_paciente PRIMARY KEY (id) -- aqui es para crear la pk (primary key)
     CONSTRAINT fk_paciente_direccion FOREIGN KEY (id_direccion) REFERENCES direccion(id) -- aqui es para insertar y/o crear la fk (foreing key)
  ); 
+
+CREATE TABLE IF NOT EXISTS ficha_clinica(
+    id INT AUTO_INCREMENT,
+    id_paciente INT NOT NULL,
+    historial_medico VARCHAR(255) NOT NULL,
+
+    CONSTRAINT pk_ficha_clinica PRIMARY KEY (id),
+    CONSTRAINT fk_ficha_clinica_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id)
+);
 
  CREATE TABLE IF NOT EXISTS Cita_medica( -- creacion de tablas 
     id INT AUTO_INCREMENT -- aqui es para empezar una id de una tabla 
@@ -53,24 +71,7 @@ CREATE TABLE IF NOT EXISTS Paciente(
     CONSTRAINT fk_cita_medica_id_doctor FOREIGN KEY (id_doctor) REFERENCES doctor(id)
     CONSTRAINT fk_cita_medica-id_paciente FOREIGN KEY (id_paciente) REFERENCES paciente(id)
  );
-
- CREATE TABLE IF NOT EXISTS Doctor(
-    id INT AUTO_INCREMENT,  
-    nombre varchar (250) NOT NULL, 
-    licencia varchar (250) NOT NULL,
-    id_especialidad INT NOT NULL,
-
-    CONSTRAINT PK_Doctor PRIMARY KEY (id), 
-    CONSTRAINT fk_Doctor_id_especialidad FOREIGN key (id_especialidad) REFERENCES especialidad (id)
- );
-
- CREATE TABLE IF NOT EXISTS Especialidad(
-    id INT AUTO_INCREMENT,
-    especialidad VARCHAR(250) NOT NULL,
-    descripcion VARCHAR(250) NOT NULL, 
-
-    CONSTRAINT PK_especialidad PRIMARY KEY (id) 
- );
+ 
  CREATE TABLE IF NOT EXISTS Recetamedica(
     id INT AUTO_INCREMENT, 
     detalle VARCHAR(250) NOT NULL, 

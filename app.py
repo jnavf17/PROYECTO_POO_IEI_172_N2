@@ -1,7 +1,16 @@
-from iu.menus import menu_principal, menu_trabajos
-from iu.pedir_datos import
+from iu.menus import menu_principal, menu_trabajos,menu_configuracion,sub_menu_comunas
+from datos.guardar_datos import 
+from negocio import obtener_listado_comunas,crear_comuna,modificar_comuna
+from auxiliares import nombre_aplicacion, numero_version
 
+# Definición de constantes literales para menú
+seleccionar_opcion = 'Seleccione su opción [0-4]: '
+opcion_incorrecta = 'Opción Incorrecta, ingrese nuevamente...'
+volver_menu_principal = 'Volviendo al menú principal...'
+
+print(f'{nombre_aplicacion} {numero_version}')
 while True:
+    print()
     menu_principal()
     opcion = input('Seleccione su opción [0-5]: ')
     if opcion == '1':
@@ -13,31 +22,54 @@ while True:
     elif opcion == '4':
         while True:
             menu_trabajos()
-            opcion_trabajo = input('Seleccione su opción [0-5]: ')
-            if opcion_trabajo == '1':
+            opcion_configuracion = input('Seleccione su opción [0-5]: ')
+            if opcion_configuracion == '1':
                 pass
-            elif opcion_trabajo == '2':
+            elif opcion_configuracion == '2':
                 pass
-            elif opcion_trabajo == '3':
-                nombre, pais = datos_marca()
-                guardar_marca(nombre, pais)
-            elif opcion_trabajo == '4':
+            elif opcion_configuracion == '3':
                 pass
-            elif opcion_trabajo == '0':
+            elif opcion_configuracion == '4':
+                pass
+            elif opcion_configuracion == '0':
                 print('Volviendo al menú principal...')
                 break
+            else:
+                print(opcion_incorrecta)
+    elif opcion == '5':
+        while True:
+            menu_configuracion()
+            opcion_configuracion = input(seleccionar_opcion)
+            if opcion_configuracion == '1':
+                while True:
+                    sub_menu_comunas()
+                    opcion_comuna = input(seleccionar_opcion)
+                    if opcion_comuna == '1':
+                        obtener_listado_comunas()
+                    elif opcion_comuna == '2':
+                        crear_comuna()
+                    elif opcion_comuna == '3':
+                        modificar_comuna()
+                    elif opcion_comuna == '4':
+                        pass
+                    elif opcion_comuna == '0':
+                        print('Volviendo al menú configuración...')
+                        break
+                    else:
+                        print(opcion_incorrecta)
+            elif opcion_configuracion == '0':
+                print(volver_menu_principal)
+                break
+            else:
+                print(opcion_incorrecta)
     elif opcion == '0':
         print('Saliendo...')
         break
     else:
-        print('Opción Incorrecta, ingrese nuevamente...')
-
+        print(opcion_incorrecta)
+        
 # from modelos.comuna import Comuna
-# from modelos.marca import Marca
-# from modelos.tipo_mecanico import TipoMecanico
 # from datos.obtener_datos import obtener_lista_objetos
-# from datos.guardar_datos import guardar_marca
-# from negocio.negocio_marca import obtener_marca_nombre
 # from negocio.negocio_comuna import obtener_comuna_nombre
 
 # from prettytable import PrettyTable
@@ -56,43 +88,6 @@ while True:
 #         print(tabla_comunas)
 
 
-# def trabajo_tipos_mecanico():
-#     tabla_tipos_mecanico = PrettyTable()
-#     tabla_tipos_mecanico.field_names = ['N°', 'Tipo Mecánico', 'Descripción']
-#     listado_tipos_mecanico = obtener_lista_objetos(TipoMecanico)
-#     if listado_tipos_mecanico:
-#         for tipo_mecanico in listado_tipos_mecanico:
-#             tabla_tipos_mecanico.add_row(
-#                 [tipo_mecanico.id, tipo_mecanico.tipo_mecanico, tipo_mecanico.descripcion_tipo_mecanico])
-#             # print(f'{marca.id} {marca.nombre_marca} {marca.pais_origen}')
-#         print(tabla_tipos_mecanico)
-
-
-# def trabajo_marcas():
-#     tabla_marcas = PrettyTable()
-#     tabla_marcas.field_names = ['N°', 'Marca', 'País Origen']
-#     marca = Marca
-#     listado_marcas = obtener_lista_objetos(marca)
-#     if listado_marcas:
-#         for marca in listado_marcas:
-#             tabla_marcas.add_row(
-#                 [marca.id, marca.nombre_marca, marca.pais_origen])
-#             # print(f'{marca.id} {marca.nombre_marca} {marca.pais_origen}')
-#         print(tabla_marcas)
-
-
-# def buscar_marca():
-#     tabla = PrettyTable()
-#     tabla.field_names = ['N°', 'Marca', 'País Origen']
-#     nombre_marca = input('Ingrese nombre de marca a buscar: ')
-#     if nombre_marca != '':
-#         marca = obtener_marca_nombre(nombre_marca)
-#         if marca is not None:
-#             tabla.add_row(
-#                 [marca.id, marca.nombre_marca, marca.pais_origen])
-#             print(tabla)
-
-
 # def buscar_comuna():
 #     tabla = PrettyTable()
 #     tabla.field_names = ['N°', 'Código Comuna', 'Nombre Comuna']
@@ -106,8 +101,4 @@ while True:
 
 
 # # trabajo_comunas()
-# trabajo_tipos_mecanico()
-# # trabajo_marcas()
-# # buscar_marca()
 # # buscar_comuna()
-# # guardar_marca()

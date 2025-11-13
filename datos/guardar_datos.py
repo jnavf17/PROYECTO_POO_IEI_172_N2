@@ -14,6 +14,16 @@ def crear_objeto(objeto):
     finally:
         sesion.close()
 
+def modificar_objeto(objeto):
+    sesion.merge(objeto)
+    try:
+        sesion.commit()
+        print("El objeto se ha guardado correctamente.")
+    except Exception as e:
+        sesion.rollback()
+        print(f"Error al guardar el objeto: {e}")
+    finally:
+        sesion.close()
 
 def guardar_comuna():
     nombre = input('Ingrese nombre comuna: ')

@@ -1,4 +1,16 @@
-def datos_comuna():
+def str_nombre_comuna():
     nombre = input('Ingrese nombre comuna: ')
-    codigo = input('Ingrese codigo de comuna: ')
-    return nombre.title(), codigo
+    return nombre.title()
+
+def str_codigo_comuna():
+    codigo = input('Ingrese código de comuna: ')
+    return codigo
+
+def str_nuevo_nombre_comuna():
+    nombre = input('Ingrese NUEVO nombre comuna (o Enter para conservarlo): ')
+    return nombre.title()
+
+def str_nuevo_codigo_comuna():
+    codigo = input('Ingrese NUEVO código de comuna (o Enter para conservarlo): ')
+    return codigo
+

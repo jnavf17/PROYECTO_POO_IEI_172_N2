@@ -8,11 +8,11 @@ def menu_principal():
     print(separador_menu)
     print('Menú Principal')
     print(separador_menu)
-    print('[1] .')
-    print('[2] .')
-    print('[3] .')
-    print('[4] .')
-    print('[5] .')
+    print('[1] Gestionar personal.')
+    print('[2] Gestionar pacientes.')
+    print('[3] Gestionar trabajos.')
+    print('[4] Gestionar insumos.')
+    print('[5] Configuración Aplicación.')
     print('[0] Salir')
 
 
@@ -21,10 +21,10 @@ def menu_trabajos():
     print(separador_menu)
     print('Menú Trabajos')  
     print(separador_menu)
-    print('[1] .')
-    print('[2] .')
-    print('[3] .')
-    print('[4] .')
+    print('[1] Ver listado de pacientes.')
+    print('[2] Ver listado de trabajos finalizados.')
+    print('[3] Ingresar nuevo paciente.')
+    print('[4] Modificar trabajo.')
     print(opcion_volver)
 
 def menu_configuracion():
